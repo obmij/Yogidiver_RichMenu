@@ -9,7 +9,7 @@ const BookingService = {
 
   open(replyToken, key) {
     const course = this.findCourse(key);
-    const formUrl = AppProperties.get('FORM_URL') || 'https://docs.google.com/forms/';
+    const formUrl = FormService.getUrl();
 
     const bubble = {
       type: 'bubble',
