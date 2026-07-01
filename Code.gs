@@ -15,6 +15,10 @@ function setup() {
   return SetupService.run();
 }
 
+function validateProject() {
+  return ValidationService.run();
+}
+
 function onBookingSubmit(e) {
   return BookingService.handleSubmit(e);
 }
