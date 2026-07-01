@@ -24,8 +24,9 @@ const FlexBuilder = {
       }
     };
 
-    if (data.image) {
-      bubble.hero = { type: 'image', url: data.image, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' };
+    const image = AssetResolver.image(data);
+    if (image) {
+      bubble.hero = { type: 'image', url: image, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' };
     }
 
     return bubble;
@@ -43,8 +44,9 @@ const FlexBuilder = {
     });
 
     const bubble = { type: 'bubble', body: { type: 'box', layout: 'vertical', contents } };
-    if (data.image) {
-      bubble.hero = { type: 'image', url: data.image, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' };
+    const image = AssetResolver.image(data);
+    if (image) {
+      bubble.hero = { type: 'image', url: image, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' };
     }
     return bubble;
   }
