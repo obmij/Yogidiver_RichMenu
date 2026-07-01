@@ -3,7 +3,9 @@ const FormService = {
     const existingId = AppProperties.get('FORM_ID');
     if (existingId) {
       try {
-        return FormApp.openById(existingId);
+        const form = FormApp.openById(existingId);
+        AppProperties.set('FORM_URL', form.getPublishedUrl());
+        return form;
       } catch (error) {
         AppProperties.remove('FORM_ID');
         AppProperties.remove('FORM_URL');
@@ -32,6 +34,12 @@ const FormService = {
   },
 
   getUrl() {
-    return AppProperties.get('FORM_URL') || this.ensure().getPublishedUrl();
+    const url = AppProperties.get('FORM_URL');
+    if (url) return url;
+
+    const form = this.ensure();
+    const formUrl = form.getPublishedUrl();
+    AppProperties.set('FORM_URL', formUrl);
+    return formUrl;
   }
 };
