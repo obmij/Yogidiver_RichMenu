@@ -30,8 +30,9 @@ const CarouselBuilder = {
       }
     };
 
-    if (item.image) {
-      bubble.hero = { type: 'image', url: item.image, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' };
+    const image = AssetResolver.image(item);
+    if (image) {
+      bubble.hero = { type: 'image', url: image, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' };
     }
 
     return bubble;
