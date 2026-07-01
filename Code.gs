@@ -3,7 +3,7 @@
  */
 function doGet() {
   return HtmlService
-    .createHtmlOutputFromFile('views/upload')
+    .createHtmlOutputFromFile('upload')
     .setTitle('YogiDiver Rich Menu Upload');
 }
 
