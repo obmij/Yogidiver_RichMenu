@@ -1,0 +1,9 @@
+**/**
+!appsscript.json
+!*.gs
+!*.html
+!services/**
+!controllers/**
+!builders/**
+!data/**
+!views/**
