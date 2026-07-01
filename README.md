@@ -27,12 +27,34 @@ Apps Script project for the YogiDiver LINE Official Account.
 
 ## Required Apps Script Properties
 
-Set these in Apps Script: Project Settings → Script Properties.
+Set these in Apps Script Project Settings Script Properties.
 
 | Key | Value |
 | --- | --- |
 | `LINE_CHANNEL_ACCESS_TOKEN` | LINE Messaging API long-lived channel access token |
 | `LINE_CHANNEL_SECRET` | LINE channel secret |
+
+## Optional asset properties
+
+Flex message images can stay blank. To show images in course cards, set these Script Properties to public HTTPS image URLs:
+
+| Key | Used by |
+| --- | --- |
+| `ASSET_LOGO_URL` | logo |
+| `ASSET_CASUAL_URL` | casual course card |
+| `ASSET_PROFESSIONAL_URL` | professional course card |
+| `ASSET_GUIDED_URL` | guided dive card |
+| `ASSET_BOOKING_URL` | booking carousel |
+| `ASSET_PRETRIP_URL` | pretrip card |
+| `ASSET_ONLINE_URL` | online experience card |
+
+Apps Script helper functions:
+
+```javascript
+setAsset('casual', 'PUBLIC_HTTPS_IMAGE_URL');
+setAssets({ booking: 'PUBLIC_HTTPS_IMAGE_URL', guided: 'PUBLIC_HTTPS_IMAGE_URL' });
+listAssets();
+```
 
 ## Local development with clasp
 
@@ -100,7 +122,7 @@ The IDs are saved in Script Properties:
 Deploy as Web App, open the Web App URL, then upload a PNG sized:
 
 ```text
-2500 × 1686
+2500 x 1686
 ```
 
 The upload page calls:
@@ -123,5 +145,8 @@ Use the latest Web App deployment URL after code changes.
 - `doPost(e)` LINE webhook
 - `setup()` project setup
 - `validateProject()` local validation
+- `listAssets()` list configured image URLs
+- `setAsset(key, url)` set one image URL
+- `setAssets(values)` set multiple image URLs
 - `onBookingSubmit(e)` form submit trigger
 - `installRichMenuFromUpload(bytes)` Rich Menu image upload
