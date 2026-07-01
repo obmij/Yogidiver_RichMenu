@@ -19,6 +19,18 @@ function validateProject() {
   return ValidationService.run();
 }
 
+function listAssets() {
+  return AssetService.list();
+}
+
+function setAsset(key, url) {
+  return AssetService.set(key, url);
+}
+
+function setAssets(values) {
+  return AssetService.setMany(values);
+}
+
 function onBookingSubmit(e) {
   return BookingService.handleSubmit(e);
 }
