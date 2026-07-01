@@ -34,6 +34,35 @@ Set these in Apps Script: Project Settings → Script Properties.
 | `LINE_CHANNEL_ACCESS_TOKEN` | LINE Messaging API long-lived channel access token |
 | `LINE_CHANNEL_SECRET` | LINE channel secret |
 
+## Local development with clasp
+
+Install clasp if needed:
+
+```bash
+npm install -g @google/clasp
+clasp login
+```
+
+For an existing Apps Script project:
+
+```bash
+git clone https://github.com/obmij/Yogidiver_RichMenu.git
+cd Yogidiver_RichMenu
+clasp clone <SCRIPT_ID> --rootDir .
+clasp push
+```
+
+For a new Apps Script project:
+
+```bash
+git clone https://github.com/obmij/Yogidiver_RichMenu.git
+cd Yogidiver_RichMenu
+clasp create --type standalone --title "YogiDiver RichMenu" --rootDir .
+clasp push
+```
+
+`.clasp.json` is intentionally ignored because it contains the local script ID.
+
 ## Setup
 
 Run this function once in Apps Script:
@@ -71,6 +100,12 @@ installRichMenuFromUpload(bytes);
 ```
 
 This creates the Rich Menu if needed, uploads the image, and sets it as the default Rich Menu.
+
+## LINE Webhook
+
+Deploy the Apps Script project as a Web App and paste the Web App URL into LINE Developers as the Messaging API webhook URL.
+
+Use the latest Web App deployment URL after code changes.
 
 ## Apps Script entry points
 
