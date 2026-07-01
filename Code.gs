@@ -15,10 +15,6 @@ function setup() {
   return SetupService.run();
 }
 
-function validateProject() {
-  return ValidationService.run();
-}
-
 function listAssets() {
   return AssetService.list();
 }
