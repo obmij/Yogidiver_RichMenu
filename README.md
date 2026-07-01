@@ -85,16 +85,6 @@ clasp push
 
 `.clasp.json` is intentionally ignored because it contains the local script ID.
 
-## Validation
-
-Before connecting LINE, run:
-
-```javascript
-validateProject();
-```
-
-This checks local builders, course data, and Rich Menu area mapping without calling LINE APIs.
-
 ## Setup
 
 Run this function once in Apps Script:
@@ -144,7 +134,6 @@ Use the latest Web App deployment URL after code changes.
 - `doGet()` upload page
 - `doPost(e)` LINE webhook
 - `setup()` project setup
-- `validateProject()` local validation
 - `listAssets()` list configured image URLs
 - `setAsset(key, url)` set one image URL
 - `setAssets(values)` set multiple image URLs
