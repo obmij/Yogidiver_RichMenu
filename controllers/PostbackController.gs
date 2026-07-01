@@ -29,5 +29,7 @@ const PostbackController = {
     if (data && data.indexOf('booking=') === 0) {
       return BookingService.open(event.replyToken, data.replace('booking=', ''));
     }
+
+    return LineService.replyText(event.replyToken, '目前無法處理這個選項，請重新點選選單。');
   }
 };
