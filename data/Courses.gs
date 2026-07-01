@@ -2,7 +2,7 @@ const COURSES = {
   casual: {
     title: '休閒業餘',
     subtitle: 'PADI Recreational Courses',
-    image: ASSETS.casual,
+    imageKey: 'casual',
     items: [
       'Open Water Diver',
       'Advanced Open Water Diver',
@@ -16,7 +16,7 @@ const COURSES = {
   professional: {
     title: '專業人士',
     subtitle: 'PADI Professional Courses',
-    image: ASSETS.professional,
+    imageKey: 'professional',
     items: [
       'Divemaster',
       'Open Water Scuba Instructor',
@@ -29,7 +29,7 @@ const COURSES = {
   guided: {
     title: '導覽潛水',
     subtitle: '2 人開團｜客製化潛水計劃',
-    image: ASSETS.guided,
+    imageKey: 'guided',
     rows: [
       { name: '導潛', price: 'NT$800 / 氣瓶' },
       { name: '重裝租借', price: 'NT$1,200 / 天' },
@@ -47,28 +47,28 @@ const BOOKING_COURSES = [
     title: 'Open Water Diver',
     subtitle: '3 天 2 夜｜eLearning',
     price: 'NT$15,000',
-    image: ASSETS.booking
+    imageKey: 'booking'
   },
   {
     key: 'aowd',
     title: 'Advanced Open Water Diver',
     subtitle: '2 天',
     price: 'NT$10,000',
-    image: ASSETS.booking
+    imageKey: 'booking'
   },
   {
     key: 'guided',
     title: 'Guided Dive',
     subtitle: '2 人開團',
     price: 'NT$800 / 氣瓶',
-    image: ASSETS.guided
+    imageKey: 'guided'
   },
   {
     key: 'skindive',
     title: 'Skin Dive',
     subtitle: '最多 2 人',
     price: 'NT$2,000',
-    image: ASSETS.booking
+    imageKey: 'booking'
   }
 ];
 
@@ -76,13 +76,13 @@ const INFO_PAGES = {
   pretrip: {
     title: '行前須知',
     subtitle: 'Pre-trip Information',
-    image: ASSETS.pretrip,
+    imageKey: 'pretrip',
     lines: ['行前須知內容建置中。']
   },
   online: {
     title: '線上體驗',
     subtitle: 'Online Experience',
-    image: ASSETS.online,
+    imageKey: 'online',
     lines: ['線上體驗內容建置中。']
   }
 };
