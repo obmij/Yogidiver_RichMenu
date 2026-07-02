@@ -2,7 +2,10 @@ const RichMenuService = {
   ensure() {
     const existingId = AppProperties.get('RICH_MENU_ID');
     if (existingId) return existingId;
+    return this.create();
+  },
 
+  create() {
     const payload = {
       size: {
         width: CONFIG.RICH_MENU_WIDTH,
@@ -44,43 +47,66 @@ const RichMenuService = {
 
   area(x, y, width, height, data, displayText) {
     return {
-      bounds: { x, y, width, height },
+      bounds: { x: x, y: y, width: width, height: height },
       action: {
         type: 'postback',
-        data,
-        displayText
+        data: data,
+        displayText: displayText
       }
     };
   },
 
-  uploadImage(bytes, contentType) {
-    const richMenuId = this.ensure();
+  uploadImage(bytes, contentType, richMenuId) {
+    const id = richMenuId || this.ensure();
     const mimeType = contentType || 'image/jpeg';
-    const normalizedBytes = bytes.map(value => value > 127 ? value - 256 : value);
+    const normalizedBytes = bytes.map(function(value) {
+      return value > 127 ? value - 256 : value;
+    });
 
     return LineService.request(
-      LineService.DATA_API_BASE + '/richmenu/' + richMenuId + '/content',
+      LineService.DATA_API_BASE + '/richmenu/' + id + '/content',
       'post',
       normalizedBytes,
       mimeType
     );
   },
 
-  setDefault() {
-    const richMenuId = this.ensure();
+  setDefault(richMenuId) {
+    const id = richMenuId || this.ensure();
     LineService.request(
-      LineService.API_BASE + '/user/all/richmenu/' + richMenuId,
+      LineService.API_BASE + '/user/all/richmenu/' + id,
       'post'
     );
-    return richMenuId;
+    return id;
+  },
+
+  remove(richMenuId) {
+    if (!richMenuId) return;
+    try {
+      LineService.request(
+        LineService.API_BASE + '/richmenu/' + richMenuId,
+        'delete'
+      );
+    } catch (error) {
+      Logger.log('Unable to delete old Rich Menu: ' + error.message);
+    }
   },
 
   installFromUpload(bytes, contentType) {
-    const richMenuId = this.ensure();
-    this.uploadImage(bytes, contentType || 'image/jpeg');
-    this.setDefault();
+    const oldId = AppProperties.get('RICH_MENU_ID');
+    AppProperties.remove('RICH_MENU_ID');
+
+    const newId = this.create();
+    this.uploadImage(bytes, contentType || 'image/jpeg', newId);
+    this.setDefault(newId);
+
+    if (oldId && oldId !== newId) {
+      this.remove(oldId);
+    }
+
     return {
-      richMenuId,
+      richMenuId: newId,
+      previousRichMenuId: oldId || '',
       status: 'installed'
     };
   }
