@@ -1,16 +1,16 @@
 const SetupStatusService = {
   get() {
-    const required = [
-      CONFIG.LINE_CHANNEL_ACCESS_TOKEN_KEY,
-      CONFIG.LINE_CHANNEL_SECRET_KEY
-    ];
+    const missing = [];
+    const tokenKey = CONFIG.LINE_CHANNEL_ACCESS_TOKEN_KEY;
 
-    const missing = required.filter(key => !AppProperties.has(key));
+    if (!AppProperties.has(tokenKey) && !LineService.looksLikeToken(tokenKey)) {
+      missing.push('LINE_CHANNEL_ACCESS_TOKEN');
+    }
 
     return {
       ok: missing.length === 0,
       missing: missing,
-      required: required
+      required: ['LINE_CHANNEL_ACCESS_TOKEN']
     };
   }
 };
