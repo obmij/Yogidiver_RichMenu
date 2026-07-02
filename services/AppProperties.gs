@@ -15,7 +15,15 @@ const AppProperties = {
     PropertiesService.getScriptProperties().deleteProperty(key);
   },
 
+  has(key) {
+    return !!this.get(key);
+  },
+
   requireValue(key) {
+    if (!key) {
+      throw new Error('Missing property key name in config.gs.');
+    }
+
     const value = this.get(key);
     if (!value) {
       throw new Error('Missing Script Property: ' + key);
