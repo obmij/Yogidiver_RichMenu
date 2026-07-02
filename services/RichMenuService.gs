@@ -52,15 +52,16 @@ const RichMenuService = {
     };
   },
 
-  uploadImage(bytes) {
+  uploadImage(bytes, contentType) {
     const richMenuId = this.ensure();
+    const mimeType = contentType || 'image/jpeg';
     const normalizedBytes = bytes.map(value => value > 127 ? value - 256 : value);
 
     return LineService.request(
       LineService.DATA_API_BASE + '/richmenu/' + richMenuId + '/content',
       'post',
       normalizedBytes,
-      'image/png'
+      mimeType
     );
   },
 
@@ -73,9 +74,9 @@ const RichMenuService = {
     return richMenuId;
   },
 
-  installFromUpload(bytes) {
+  installFromUpload(bytes, contentType) {
     const richMenuId = this.ensure();
-    this.uploadImage(bytes);
+    this.uploadImage(bytes, contentType || 'image/jpeg');
     this.setDefault();
     return {
       richMenuId,
