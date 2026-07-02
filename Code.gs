@@ -15,6 +15,10 @@ function setup() {
   return SetupService.run();
 }
 
+function getSetupStatus() {
+  return SetupStatusService.get();
+}
+
 function listAssets() {
   return AssetService.list();
 }
