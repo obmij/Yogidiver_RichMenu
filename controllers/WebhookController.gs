@@ -4,14 +4,19 @@
 const WebhookController = {
   handle(e) {
     try {
-      const body = JSON.parse(e.postData.contents || '{}');
+      const body = e && e.postData && e.postData.contents
+        ? JSON.parse(e.postData.contents)
+        : {};
+
       const events = body.events || [];
       events.forEach(event => this.route(event));
     } catch (error) {
       Logger.log(error.stack || error);
     }
 
-    return ContentService.createTextOutput('OK');
+    return ContentService
+      .createTextOutput('OK')
+      .setMimeType(ContentService.MimeType.TEXT);
   },
 
   route(event) {
