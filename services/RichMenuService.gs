@@ -33,21 +33,22 @@ const RichMenuService = {
     const row = Math.floor(h / 2);
 
     return [
-      this.area(0, 0, col, row, 'menu=casual'),
-      this.area(col, 0, col, row, 'menu=pro'),
-      this.area(col * 2, 0, w - col * 2, row, 'menu=guided'),
-      this.area(0, row, col, h - row, 'menu=booking'),
-      this.area(col, row, col, h - row, 'menu=pretrip'),
-      this.area(col * 2, row, w - col * 2, h - row, 'menu=online')
+      this.area(0, 0, col, row, 'menu=casual', '休閒業餘'),
+      this.area(col, 0, col, row, 'menu=pro', '專業人士'),
+      this.area(col * 2, 0, w - col * 2, row, 'menu=guided', '導覽潛水'),
+      this.area(0, row, col, h - row, 'menu=booking', '預訂行程'),
+      this.area(col, row, col, h - row, 'menu=pretrip', '行前須知'),
+      this.area(col * 2, row, w - col * 2, h - row, 'menu=online', '線上體驗')
     ];
   },
 
-  area(x, y, width, height, data) {
+  area(x, y, width, height, data, displayText) {
     return {
       bounds: { x, y, width, height },
       action: {
         type: 'postback',
-        data
+        data,
+        displayText
       }
     };
   },
