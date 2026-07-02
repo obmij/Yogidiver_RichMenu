@@ -24,10 +24,12 @@ function listAssets() {
 }
 
 function setAsset(key, url) {
+  if (!key) return AssetService.list();
   return AssetService.set(key, url);
 }
 
 function setAssets(values) {
+  if (!values) return AssetService.list();
   return AssetService.setMany(values);
 }
 
