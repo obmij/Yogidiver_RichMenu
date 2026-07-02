@@ -7,7 +7,7 @@ const MessageController = {
 
     return LineService.replyText(
       event.replyToken,
-      'Webhook OK\n\n' + event.message.text
+      'YogiDiver 已連線。請使用下方圖文選單查看課程、導覽潛水與預訂行程。'
     );
   }
 };
