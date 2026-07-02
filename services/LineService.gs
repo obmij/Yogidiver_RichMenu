@@ -6,7 +6,19 @@ const LineService = {
   DATA_API_BASE: 'https://api-data.line.me/v2/bot',
 
   token() {
-    return AppProperties.requireValue(CONFIG.LINE_CHANNEL_ACCESS_TOKEN_KEY);
+    const keyOrToken = CONFIG.LINE_CHANNEL_ACCESS_TOKEN_KEY;
+    const value = keyOrToken ? AppProperties.get(keyOrToken) : '';
+    if (value) return value;
+
+    if (this.looksLikeToken(keyOrToken)) {
+      return keyOrToken;
+    }
+
+    throw new Error('Missing Script Property: LINE_CHANNEL_ACCESS_TOKEN');
+  },
+
+  looksLikeToken(value) {
+    return typeof value === 'string' && value.length > 80 && value !== 'LINE_CHANNEL_ACCESS_TOKEN';
   },
 
   request(url, method, payload, contentType) {
