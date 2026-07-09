@@ -1,0 +1,59 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "YogiDiver 優潛人 Rich Menu 6-grid",
+  "chatBarText": "YogiDiver 優潛人",
+  "areas": [
+    {
+      "bounds": { "x": 0, "y": 0, "width": 833, "height": 843 },
+      "action": {
+        "type": "uri",
+        "label": "休閒業餘",
+        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#recreation"
+      }
+    },
+    {
+      "bounds": { "x": 833, "y": 0, "width": 834, "height": 843 },
+      "action": {
+        "type": "uri",
+        "label": "專業人士",
+        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#professional"
+      }
+    },
+    {
+      "bounds": { "x": 1667, "y": 0, "width": 833, "height": 843 },
+      "action": {
+        "type": "uri",
+        "label": "導覽潛水",
+        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#guided"
+      }
+    },
+    {
+      "bounds": { "x": 0, "y": 843, "width": 833, "height": 843 },
+      "action": {
+        "type": "uri",
+        "label": "預訂行程",
+        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#booking"
+      }
+    },
+    {
+      "bounds": { "x": 833, "y": 843, "width": 834, "height": 843 },
+      "action": {
+        "type": "uri",
+        "label": "行前須知",
+        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#pretrip"
+      }
+    },
+    {
+      "bounds": { "x": 1667, "y": 843, "width": 833, "height": 843 },
+      "action": {
+        "type": "uri",
+        "label": "線上體驗",
+        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#online"
+      }
+    }
+  ]
+}
