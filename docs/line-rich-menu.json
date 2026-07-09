@@ -12,7 +12,7 @@
       "action": {
         "type": "uri",
         "label": "休閒業餘",
-        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#recreation"
+        "uri": "https://obmij.github.io/Yogidiver_RichMenu/#recreation"
       }
     },
     {
@@ -20,7 +20,7 @@
       "action": {
         "type": "uri",
         "label": "專業人士",
-        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#professional"
+        "uri": "https://obmij.github.io/Yogidiver_RichMenu/#professional"
       }
     },
     {
@@ -28,7 +28,7 @@
       "action": {
         "type": "uri",
         "label": "導覽潛水",
-        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#guided"
+        "uri": "https://obmij.github.io/Yogidiver_RichMenu/#guided"
       }
     },
     {
@@ -36,7 +36,7 @@
       "action": {
         "type": "uri",
         "label": "預訂行程",
-        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#booking"
+        "uri": "https://obmij.github.io/Yogidiver_RichMenu/#booking"
       }
     },
     {
@@ -44,7 +44,7 @@
       "action": {
         "type": "uri",
         "label": "行前須知",
-        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#pretrip"
+        "uri": "https://obmij.github.io/Yogidiver_RichMenu/#pretrip"
       }
     },
     {
@@ -52,7 +52,7 @@
       "action": {
         "type": "uri",
         "label": "線上體驗",
-        "uri": "https://YOUR_GITHUB_PAGES_DOMAIN/#online"
+        "uri": "https://obmij.github.io/Yogidiver_RichMenu/#online"
       }
     }
   ]
