@@ -2,11 +2,15 @@
 
 Static website + LINE OA rich menu + Apps Script webhook project.
 
-## Root files
+## Static website structure
 
-- `index.html` — static website, served directly from the repository root.
-- `line-rich-menu.json` — LINE OA rich menu definition using six `postback` actions.
-- `line-rich-menu-yogidiver.svg` — editable 2500 × 1686 rich menu artwork; export to PNG before uploading to LINE.
+- `index.html` — root homepage for GitHub Pages.
+- `pages/` — dedicated HTML pages.
+- `assets/css/` — shared stylesheets.
+- `assets/js/` — shared JavaScript.
+- `assets/img/` — website image assets.
+- `line/` — LINE OA rich menu JSON and artwork.
+- Apps Script files remain in their existing `controllers/`, `services/`, `builders/`, and `data/` folders.
 
 ## GitHub Pages
 
@@ -46,11 +50,29 @@ Set these in Apps Script Project Settings → Script Properties.
 | Key | Value |
 | --- | --- |
 | `LINE_CHANNEL_ACCESS_TOKEN` | LINE Messaging API long-lived channel access token |
-| `LINE_CHANNEL_SECRET` | LINE channel secret |
+| `LINE_CHANNEL_SECRET` | LINE channel secret; currently reserved for signature validation if enabled later |
+
+## Apps Script verification
+
+Run this first after pushing to Apps Script:
+
+```javascript
+runSelfTest();
+```
+
+`runSelfTest()` checks:
+
+- `CONFIG` and LINE token property key.
+- Rich menu size and 6 tappable postback areas.
+- Rich menu postback values against webhook routes.
+- Course, booking, guided diving, pretrip, and online data objects.
+- Flex Message payload builders for all rich menu responses.
+
+This is a static payload and structure test. It does not call the LINE API and does not prove the deployed Web App URL, channel token, or LINE account permissions are valid.
 
 ## Setup
 
-Run this function once in Apps Script:
+After `runSelfTest()` passes, run this once in Apps Script:
 
 ```javascript
 setup();
@@ -72,7 +94,7 @@ The IDs are saved in Script Properties:
 
 ## Rich Menu image upload
 
-Deploy Apps Script as a Web App, open the Web App URL, then upload a PNG sized:
+Deploy Apps Script as a Web App, open the Web App URL, then upload a PNG/JPG. The upload page resizes it to:
 
 ```text
 2500 x 1686
@@ -81,7 +103,7 @@ Deploy Apps Script as a Web App, open the Web App URL, then upload a PNG sized:
 The upload page calls:
 
 ```javascript
-installRichMenuFromUpload(bytes);
+installRichMenuFromUpload(bytes, contentType);
 ```
 
 This creates the Rich Menu if needed, uploads the image, and sets it as the default Rich Menu.
@@ -95,5 +117,6 @@ Deploy the Apps Script project as a Web App and paste the Web App URL into LINE 
 - `doGet()` upload page
 - `doPost(e)` LINE webhook
 - `setup()` project setup
+- `runSelfTest()` local structure/payload verification
 - `onBookingSubmit(e)` form submit trigger
-- `installRichMenuFromUpload(bytes)` Rich Menu image upload
+- `installRichMenuFromUpload(bytes, contentType)` Rich Menu image upload
