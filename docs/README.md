@@ -8,6 +8,14 @@ This folder contains a static website prototype for **YogiDiver 優潛人** plus
 - `line-rich-menu.json` — LINE Messaging API rich menu object with six tappable areas.
 - `line-rich-menu-yogidiver.svg` — editable 2500 × 1686 rich menu source artwork. Export to PNG before uploading to LINE.
 
+## Expected GitHub Pages URL
+
+```text
+https://obmij.github.io/Yogidiver_RichMenu/
+```
+
+The rich menu links in `line-rich-menu.json` already point to this URL.
+
 ## Website structure
 
 Header requirements implemented:
@@ -61,14 +69,24 @@ The current page contains the front-end booking and payment handoff flow. Produc
 
 ## GitHub Pages deployment
 
-Use GitHub Pages with source set to:
+A GitHub Actions workflow has been added at:
+
+```text
+.github/workflows/pages.yml
+```
+
+In GitHub, confirm this repo setting:
+
+```text
+Settings → Pages → Source → GitHub Actions
+```
+
+If you prefer classic Pages instead, use:
 
 ```text
 Branch: main
 Folder: /docs
 ```
-
-After GitHub Pages is enabled, replace `https://YOUR_GITHUB_PAGES_DOMAIN` in `line-rich-menu.json` with the live site URL.
 
 ## LINE rich menu deployment
 
