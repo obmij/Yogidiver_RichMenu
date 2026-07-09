@@ -5,16 +5,35 @@ This folder contains a static website prototype for **YogiDiver 優潛人** plus
 ## Files
 
 - `index.html` — single-page responsive website.
-- `line-rich-menu.json` — LINE Messaging API rich menu object with six tappable areas.
+- `line-rich-menu.json` — LINE Messaging API rich menu object with six tappable postback areas for the LINE OA webhook.
 - `line-rich-menu-yogidiver.svg` — editable 2500 × 1686 rich menu source artwork. Export to PNG before uploading to LINE.
 
-## Expected GitHub Pages URL
+## LINE OA rich menu behavior
+
+The rich menu is designed for **LINE Official Account**, not as a website navigation menu.
+
+`line-rich-menu.json` uses `postback` actions so that each tap is handled by the LINE webhook / Apps Script bot logic:
+
+| Area | Postback data | Display text |
+|---|---|---|
+| 休閒業餘 | `menu=casual` | 休閒業餘 |
+| 專業人士 | `menu=pro` | 專業人士 |
+| 導覽潛水 | `menu=guided` | 導覽潛水 |
+| 預訂行程 | `menu=booking` | 預訂行程 |
+| 行前須知 | `menu=pretrip` | 行前須知 |
+| 線上體驗 | `menu=online` | 線上體驗 |
+
+The public website can still be deployed separately, but the rich menu itself should trigger LINE OA responses unless a specific LIFF or external booking URL is intentionally required.
+
+## Website URL
+
+If GitHub Pages is enabled, the static website will be available at:
 
 ```text
 https://obmij.github.io/Yogidiver_RichMenu/
 ```
 
-The rich menu links in `line-rich-menu.json` already point to this URL.
+This URL is for the public website only. It is not required for the rich menu postback flow.
 
 ## Website structure
 
@@ -94,3 +113,4 @@ Folder: /docs
 2. Create the rich menu using `line-rich-menu.json`.
 3. Upload the PNG as rich menu image.
 4. Set the rich menu as the default rich menu for all users.
+5. Confirm the LINE webhook / Apps Script project handles the six postback values listed above.
