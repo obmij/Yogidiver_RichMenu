@@ -1,0 +1,65 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "YogiDiver 優潛人 Rich Menu 6-grid",
+  "chatBarText": "YogiDiver 優潛人",
+  "areas": [
+    {
+      "bounds": { "x": 0, "y": 0, "width": 833, "height": 843 },
+      "action": {
+        "type": "postback",
+        "label": "休閒業餘",
+        "data": "menu=casual",
+        "displayText": "休閒業餘"
+      }
+    },
+    {
+      "bounds": { "x": 833, "y": 0, "width": 834, "height": 843 },
+      "action": {
+        "type": "postback",
+        "label": "專業人士",
+        "data": "menu=pro",
+        "displayText": "專業人士"
+      }
+    },
+    {
+      "bounds": { "x": 1667, "y": 0, "width": 833, "height": 843 },
+      "action": {
+        "type": "postback",
+        "label": "導覽潛水",
+        "data": "menu=guided",
+        "displayText": "導覽潛水"
+      }
+    },
+    {
+      "bounds": { "x": 0, "y": 843, "width": 833, "height": 843 },
+      "action": {
+        "type": "postback",
+        "label": "預訂行程",
+        "data": "menu=booking",
+        "displayText": "預訂行程"
+      }
+    },
+    {
+      "bounds": { "x": 833, "y": 843, "width": 834, "height": 843 },
+      "action": {
+        "type": "postback",
+        "label": "行前須知",
+        "data": "menu=pretrip",
+        "displayText": "行前須知"
+      }
+    },
+    {
+      "bounds": { "x": 1667, "y": 843, "width": 833, "height": 843 },
+      "action": {
+        "type": "postback",
+        "label": "線上體驗",
+        "data": "menu=online",
+        "displayText": "線上體驗"
+      }
+    }
+  ]
+}
