@@ -1,20 +1,34 @@
-# YogiDiver RichMenu
+# YogiDiverJ｜YogiDiver 優潛人
 
-Apps Script project for the YogiDiver LINE Official Account.
+Static website + LINE OA rich menu + Apps Script webhook project.
 
-## Features
+## Root files
 
-- LINE Webhook endpoint
-- Rich Menu with 6 postback areas
-- Flex Message course cards
-- Booking carousel
-- Google Form booking form
-- Google Sheet response destination
-- Google Calendar booking event creation
-- Form submit trigger
-- Rich Menu PNG upload page
+- `index.html` — static website, served directly from the repository root.
+- `line-rich-menu.json` — LINE OA rich menu definition using six `postback` actions.
+- `line-rich-menu-yogidiver.svg` — editable 2500 × 1686 rich menu artwork; export to PNG before uploading to LINE.
 
-## Rich Menu actions
+## GitHub Pages
+
+Use the simplest static Pages setting:
+
+```text
+Settings → Pages → Source: Deploy from a branch
+Branch: main
+Folder: /root
+```
+
+No GitHub Actions workflow is required.
+
+Expected Pages URL:
+
+```text
+https://obmij.github.io/Yogidiver_RichMenu/
+```
+
+## LINE OA Rich Menu actions
+
+The rich menu is for LINE Official Account interaction. It should trigger webhook / Apps Script responses, not navigate to GitHub.
 
 | Area | Postback |
 | --- | --- |
@@ -27,63 +41,12 @@ Apps Script project for the YogiDiver LINE Official Account.
 
 ## Required Apps Script Properties
 
-Set these in Apps Script Project Settings Script Properties.
+Set these in Apps Script Project Settings → Script Properties.
 
 | Key | Value |
 | --- | --- |
 | `LINE_CHANNEL_ACCESS_TOKEN` | LINE Messaging API long-lived channel access token |
 | `LINE_CHANNEL_SECRET` | LINE channel secret |
-
-## Optional asset properties
-
-Flex message images can stay blank. To show images in course cards, set these Script Properties to public HTTPS image URLs:
-
-| Key | Used by |
-| --- | --- |
-| `ASSET_LOGO_URL` | logo |
-| `ASSET_CASUAL_URL` | casual course card |
-| `ASSET_PROFESSIONAL_URL` | professional course card |
-| `ASSET_GUIDED_URL` | guided dive card |
-| `ASSET_BOOKING_URL` | booking carousel |
-| `ASSET_PRETRIP_URL` | pretrip card |
-| `ASSET_ONLINE_URL` | online experience card |
-
-Apps Script helper functions:
-
-```javascript
-setAsset('casual', 'PUBLIC_HTTPS_IMAGE_URL');
-setAssets({ booking: 'PUBLIC_HTTPS_IMAGE_URL', guided: 'PUBLIC_HTTPS_IMAGE_URL' });
-listAssets();
-```
-
-## Local development with clasp
-
-Install clasp if needed:
-
-```bash
-npm install -g @google/clasp
-clasp login
-```
-
-For an existing Apps Script project:
-
-```bash
-git clone https://github.com/obmij/Yogidiver_RichMenu.git
-cd Yogidiver_RichMenu
-clasp clone <SCRIPT_ID> --rootDir .
-clasp push
-```
-
-For a new Apps Script project:
-
-```bash
-git clone https://github.com/obmij/Yogidiver_RichMenu.git
-cd Yogidiver_RichMenu
-clasp create --type standalone --title "YogiDiver RichMenu" --rootDir .
-clasp push
-```
-
-`.clasp.json` is intentionally ignored because it contains the local script ID.
 
 ## Setup
 
@@ -109,7 +72,7 @@ The IDs are saved in Script Properties:
 
 ## Rich Menu image upload
 
-Deploy as Web App, open the Web App URL, then upload a PNG sized:
+Deploy Apps Script as a Web App, open the Web App URL, then upload a PNG sized:
 
 ```text
 2500 x 1686
@@ -127,15 +90,10 @@ This creates the Rich Menu if needed, uploads the image, and sets it as the defa
 
 Deploy the Apps Script project as a Web App and paste the Web App URL into LINE Developers as the Messaging API webhook URL.
 
-Use the latest Web App deployment URL after code changes.
-
 ## Apps Script entry points
 
 - `doGet()` upload page
 - `doPost(e)` LINE webhook
 - `setup()` project setup
-- `listAssets()` list configured image URLs
-- `setAsset(key, url)` set one image URL
-- `setAssets(values)` set multiple image URLs
 - `onBookingSubmit(e)` form submit trigger
 - `installRichMenuFromUpload(bytes)` Rich Menu image upload
