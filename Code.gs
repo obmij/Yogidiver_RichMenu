@@ -15,6 +15,10 @@ function setup() {
   return SetupService.run();
 }
 
+function runSelfTest() {
+  return TestService.run();
+}
+
 function getSetupStatus() {
   return SetupStatusService.get();
 }
@@ -37,8 +41,8 @@ function onBookingSubmit(e) {
   return BookingService.handleSubmit(e);
 }
 
-function installRichMenuFromUpload(bytes) {
-  return RichMenuService.installFromUpload(bytes);
+function installRichMenuFromUpload(bytes, contentType) {
+  return RichMenuService.installFromUpload(bytes, contentType || 'image/jpeg');
 }
 
 function createRichMenuOnly() {
